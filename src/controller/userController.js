@@ -18,6 +18,7 @@ const isValidAppointmnetStatus=(status)=>{
 const isValidobjectId = (objectId) => {
     return mongoose.Types.ObjectId.isValid(objectId)
 }
+//isValid will check input field,input field undefined, null, string and input length=0 or not
 const isValid = (value) => {
     if (typeof value === "undefined" || value === null)
         return false
@@ -57,11 +58,12 @@ const createUser = async (req, res) => {
         if (!isValid(appointment_starting_time)) {
             return res.status(400).send({ status: false, message: "please provide appointment_starting_time" })
         }
+        //regex for validation the appointment_starting_time 
         if (!(/((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/.test(appointment_starting_time))) {
             return res.status(400).send({ status: false, message: "appointment_starting_time Number is not valid enter value on 09:45 AM formate" })
 
         }
-
+        
         let duplicate_appointment_starting_time = await userModel.findOne({ appointment_starting_time });
         if (duplicate_appointment_starting_time) {
             return res.status(400).send({ status: false, message: "on this time our doctor is busy please select other appointment_starting_time" })

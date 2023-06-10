@@ -1,15 +1,33 @@
 ## Project - Appointment_booking
 
+## Setup
+
+### Clone repo
+```sh
+$ git clone https://github.com/Amit01k/Appointment_booking.gits
+```
+### Install All Dependencies
+```sh
+$ npm install
+```
+### Open Appointment_booking Folder
+```sh
+$ cd Appointment_booking
+```
+### Run the Application
+```sh
+$ npm start
+```
 ### input for create user
--user input
--title: user name title
--user_name: user name
--appointment_status: which type of appointment user want to take(noarmal,emergency)
--appointment_starting_time: appointment starting time when user come
--appointment_end_time: appointment_end_time for when user appointment time finish
--mobile_number: mobile number of user and this is unique beacause every user have own mobile number
--emamil: email of the user and this is unique beacause every user have email Id.
--password: password 
+- user input
+- title: user name title
+- user_name: user name
+- appointment_status: which type of appointment user want to take(noarmal,emergency)
+- appointment_starting_time: appointment starting time when user come
+- appointment_end_time: appointment_end_time for when user appointment time finish
+- mobile_number: mobile number of user and this is unique beacause every user have own mobile number
+- emamil: email of the user and this is unique beacause every user have email Id.
+- password: password 
 ```yaml
 {
     "title":"Mr.",
@@ -85,8 +103,8 @@
 ### Error Response structure
 ```yaml
 {
-  status: false,
-  message: ""
+  "status": false,
+  "message": ""
 }
 ```
 
@@ -206,6 +224,8 @@
 
 ### PUT /user/:id
 - Update a user by changing new input enter by user.
+- Send jsonwebtoken form headers x-api-key="jsonwebtoken".
+- By jsonwebtoken you will authorized to perform create ,update and delete operation
 - Checking if the user exists (must have isDeleted false and is present in collection). If it doesn't, return an HTTP status 404 with a response body like [this](#error-response-structure)
 - Return an HTTP status 200 if updated successfully with a body like [this](#successful-response-structure) 
 - response return the updated user document. 
@@ -215,8 +235,8 @@
 - If the book document doesn't exist then return an HTTP status of 404 with a body like [this](#error-response-structure) 
 
 ### Authentication
-- All the endpoint routes are protected.
+- All the endpoint routes are protected, for checking user is valid or not
 
 ### Authorisation
-- Only user is able to create, edit or delete the user.
-- In case of unauthorized access return an appropirate error message.
+- Only Authorized user able to create, edit or delete the user.
+- In case of unauthorized access return error message.
