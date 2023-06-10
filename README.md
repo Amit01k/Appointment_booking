@@ -4,22 +4,26 @@
 
 ### Clone repo
 ```sh
-$ git clone https://github.com/Amit01k/Appointment_booking.gits
+$ git clone https://github.com/Amit01k/Appointment_booking.git
+```
+
+### Open Appointment_booking Folder
+```sh
+$ cd Appointment_booking
 ```
 ### Install All Dependencies
 ```sh
 $ npm install
 ```
-### Open Appointment_booking Folder
-```sh
-$ cd Appointment_booking
-```
 
 ### Add Mongo DB String 
 ```yaml
-- note Add Mongo DB string to connect with database
+- Note Add Mongo DB string to connect with database
+- Open appointment_booing folder>index.js file>enter mongoDB connection String
+{
     mongoose.connect('enter your mongo DB connection string', {
     useNewUrlParser: true,})
+}
 ```
 ### Run the Application
 ```sh
