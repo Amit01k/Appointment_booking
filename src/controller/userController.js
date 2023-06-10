@@ -63,7 +63,7 @@ const createUser = async (req, res) => {
             return res.status(400).send({ status: false, message: "appointment_starting_time Number is not valid enter value on 09:45 AM formate" })
 
         }
-        
+        //here checking appointment_starting_time is already booked from someonce else,if booked it will resd error message
         let duplicate_appointment_starting_time = await userModel.findOne({ appointment_starting_time });
         if (duplicate_appointment_starting_time) {
             return res.status(400).send({ status: false, message: "on this time our doctor is busy please select other appointment_starting_time" })
@@ -73,6 +73,7 @@ const createUser = async (req, res) => {
             return res.status(400).send({ status: false, message: "please provide appointment_end_time" })
 
         }
+        //regex for validation the appointment_end_time 
         if (!(/((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/.test(appointment_end_time))) {
             return res.status(400).send({ status: false, message: "appointment_end_time is not valid enter value on 10:45 AM formate" })
 
@@ -224,20 +225,10 @@ const deletebyid = async (req, res) => {
     }
 }
 
-const getPagination = async (req, res) => {
-    const { page, title, limit } = req.query
-    console.log(req.query)
-    const titleData = await userModel.find({ title: title }).limit(limit)
-        .skip((page - 1) * limit)
-        .exec();
-    console.log(titleData)
-    return res.send({ message: "data get successfully", data: titleData });
-}
 
 module.exports.getall = getall;
 module.exports.getuserbyId = getuserbyId
 module.exports.createUser = createUser
 module.exports.deletebyid = deletebyid
-module.exports.getPagination = getPagination
 module.exports.login = login
 module.exports.updateUser = updateUser

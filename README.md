@@ -14,6 +14,13 @@ $ npm install
 ```sh
 $ cd Appointment_booking
 ```
+
+### Add Mongo DB String 
+```yaml
+- note Add Mongo DB string to connect with database
+    mongoose.connect('enter your mongo DB connection string', {
+    useNewUrlParser: true,})
+```
 ### Run the Application
 ```sh
 $ npm start
@@ -87,7 +94,7 @@ $ npm start
         "title": "Mr.",
         "user_name": "amit_singh",
         "appointment_status": "emergency",
-        "appointment_starting_time": "18:30 am",
+        "appointment_starting_time": "11:30 am",
         "appointment_end_time": "12:21 pm",
         "mobile_number": "+919402384321",
         "email": "sgsh@gmail.com",
@@ -232,6 +239,7 @@ $ npm start
 
 ### DELETE /user/:id
 - Check if the userid exists and is not deleted. If it does, mark it deleted and return an HTTP status 200 with a response body with status and message.
+- Delete will soft deleted, means we can;t perform any operation on data ,but data will be presend in database for future uses.
 - If the book document doesn't exist then return an HTTP status of 404 with a body like [this](#error-response-structure) 
 
 ### Authentication
